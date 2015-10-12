@@ -22,4 +22,4 @@ build:
 
 test_script:
 - ps: >-
-    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:vstest.console -targetargs:"/testcontainer:"KataPotter.Test\bin\debug\KataPotter.Test.dll" /resultsfile:unittest.trx" -filter:"+[*]*" -mergebyhash -output:"codecoveragereport.xml"
+    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:nunit-console.exe "-targetargs:""KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll"" /noshadow" -filter:"+[*]*" -output:opencoverCoverage.xml
