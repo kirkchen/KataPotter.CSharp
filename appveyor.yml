@@ -23,4 +23,4 @@ build:
 
 test_script:
 - ps: >-
-    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:vstest.console -register:user -targetargs:"/testcontainer:KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll /resultsfile:unittest.trx" -filter:"+[*]*" -mergebyhash -output:opencoverCoverage.xml  
+    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe" -register:user -targetargs:"/testcontainer:KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll /resultsfile:unittest.trx" -filter:"+[*]*" -mergebyhash -output:opencoverCoverage.xml  
