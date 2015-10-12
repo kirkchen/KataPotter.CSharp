@@ -1,4 +1,4 @@
-# KataPotter
+# KataPotter[![Build status](https://ci.appveyor.com/api/projects/status/3o1gdwm8gb29vujp/branch/master?svg=true)](https://ci.appveyor.com/project/kirkchen/katapotter-csharp/branch/master)
 
 This is a sample about KataPotter's practice in C#.
 With cucumber style unit test. And demostrate how to integrate open source *Continuous Integration* Solution.
