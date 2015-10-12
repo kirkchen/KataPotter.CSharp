@@ -5,7 +5,7 @@ cache:
   - C:\Users\appveyor\AppData\Local\NuGet\Cache
 
 environment:
-  repo_token:
+  COVERALLS_REPO_TOKEN:
     secure: LcOESLld5nhbZol+zNyDAulUTDFm858DzyyoihtfsIqtubzhGhIo0W76lDj/9rAN 
 
 assembly_info:
