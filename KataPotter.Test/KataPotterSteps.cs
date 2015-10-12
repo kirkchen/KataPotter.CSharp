@@ -12,13 +12,13 @@ namespace KataPotter.Test
 
         private Dictionary<string, int> booksToBuy;
 
-        private double totalPrice;
+        private decimal totalPrice;
 
         public KataPotterSteps()
         {
             this.calculator = new KataPotterPriceCalculator();
             this.booksToBuy = new Dictionary<string, int>();
-            this.totalPrice = 0d;
+            this.totalPrice = 0M;
         }
 
         [Given(@"Buy ""(.*)"" copy of the first book")]
@@ -58,7 +58,7 @@ namespace KataPotter.Test
         }
         
         [Then(@"Total price should be ""(.*)"" EUR\.")]
-        public void ThenTotalPriceShouldBeEUR_(double price)
+        public void ThenTotalPriceShouldBeEUR_(decimal price)
         {
             Assert.AreEqual(price, this.totalPrice);
         }

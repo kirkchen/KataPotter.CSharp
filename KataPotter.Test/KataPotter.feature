@@ -20,3 +20,39 @@ Scenario: Buy only 1 copy of the first book. Total price should be 8 EUR.
 	And   Buy "0" copy of the fifth book
 	When Calculate total price
 	Then Total price should be "8" EUR.
+
+Scenario: Buy 2 copies of different books. Total price should be 15.2 EUR.
+	Given Buy "1" copy of the first book
+	And   Buy "1" copy of the second book
+	And   Buy "0" copy of the third book
+	And   Buy "0" copy of the fourth book
+	And   Buy "0" copy of the fifth book
+	When Calculate total price
+	Then Total price should be "15.2" EUR.
+
+Scenario: Buy 3 copies of different books. Total price should be 21.6 EUR.
+	Given Buy "1" copy of the first book
+	And   Buy "1" copy of the second book
+	And   Buy "1" copy of the third book
+	And   Buy "0" copy of the fourth book
+	And   Buy "0" copy of the fifth book
+	When Calculate total price
+	Then Total price should be "21.6" EUR.
+
+Scenario: Buy 4 copies of different books. Total price should be 25.6 EUR.
+	Given Buy "1" copy of the first book
+	And   Buy "1" copy of the second book
+	And   Buy "1" copy of the third book
+	And   Buy "1" copy of the fourth book
+	And   Buy "0" copy of the fifth book
+	When Calculate total price
+	Then Total price should be "25.6" EUR.
+
+Scenario: Buy all 5 copies of different books. Total price should be 30 EUR.
+	Given Buy "1" copy of the first book
+	And   Buy "1" copy of the second book
+	And   Buy "1" copy of the third book
+	And   Buy "1" copy of the fourth book
+	And   Buy "1" copy of the fifth book
+	When Calculate total price
+	Then Total price should be "30" EUR.
