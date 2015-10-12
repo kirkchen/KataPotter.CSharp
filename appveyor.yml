@@ -1,9 +1,12 @@
 version: 1.0.{build}
 configuration: Release
-os: Visual Studio 2015
 
 cache:
   - C:\Users\appveyor\AppData\Local\NuGet\Cache
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: LcOESLld5nhbZol+zNyDAulUTDFm858DzyyoihtfsIqtubzhGhIo0W76lDj/9rAN 
 
 assembly_info:
   patch: true
@@ -16,6 +19,15 @@ before_build:
   - nuget restore  
 
 build:
+  project: KataPotter.sln
   parallel: true
   publish_wap: true
   verbosity: minimal
+
+test_script:
+- ps: >-
+    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:nunit-console.exe "-targetargs:""KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll"" /noshadow" -filter:"+[*]*" -output:opencoverCoverage.xml
+
+    $coveralls = (Resolve-Path "packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
+
+    & $coveralls --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
