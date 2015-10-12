@@ -16,6 +16,11 @@ before_build:
   - nuget restore  
 
 build:
+  project: KataPotter.sln
   parallel: true
   publish_wap: true
   verbosity: minimal
+
+test_script:
+- ps: >-
+    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:vstest.console -register:user -targetargs:"/testcontainer:KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll /resultsfile:unittest.trx" -filter:"+[*]*" -mergebyhash -output:opencoverCoverage.xml  
