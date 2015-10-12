@@ -24,7 +24,7 @@ build:
   publish_wap: true
   verbosity: minimal
 
-after_test: 
+test_script:
   # generate report for NUnit testing framework:
   - packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/noshadow /domain:single  KataPotter.Test\bin\Debug\KataPotter.Test.dll" -output:coverage.xml
 
