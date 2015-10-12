@@ -5,7 +5,7 @@ cache:
   - C:\Users\appveyor\AppData\Local\NuGet\Cache
 
 environment:
-  COVERALLS_REPO_TOKEN:
+  repo_token:
     secure: LcOESLld5nhbZol+zNyDAulUTDFm858DzyyoihtfsIqtubzhGhIo0W76lDj/9rAN 
 
 assembly_info:
@@ -25,9 +25,5 @@ build:
   verbosity: minimal
 
 test_script:
-- ps: >-
-    .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:nunit-console.exe "-targetargs:""KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll"" /noshadow" -filter:"+[*]*" -output:opencoverCoverage.xml
-
-    $coveralls = (Resolve-Path "packages/coveralls.io.*/tools/coveralls.net.exe").ToString()
-
-    & $coveralls --opencover opencoverCoverage.xml -r $env:COVERALLS_REPO_TOKEN
+  - .\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:nunit-console.exe "-targetargs:""KataPotter.Test\bin\$env:CONFIGURATION\KataPotter.Test.dll"" /noshadow" -filter:"+[*]*" -output:opencoverCoverage.xml
+  - .\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover opencoverCoverage.xml
